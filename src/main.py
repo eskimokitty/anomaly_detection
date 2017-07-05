@@ -13,7 +13,9 @@ def load_file(file_name):
             try:
                 current_line = json.loads(line)
                 data.append(json.loads(line))
-            except ValueError:
+            except ValueError as e:
+                print('data error!')
+                print(e)
                 continue
     return data
 
@@ -66,7 +68,6 @@ def process_line(friends, purchases, d, t, line, output=False, flagged_purchases
                 line['mean'] = "{:0.2f}".format(mean)
                 line['sd'] = "{:0.2f}".format(std)
                 flagged_purchases.append(line)
-                print(flagged_purchases)
     # Process friend network update log
     elif line['event_type'] == 'befriend':
         friends[line['id1']].add(line['id2'])
@@ -74,7 +75,6 @@ def process_line(friends, purchases, d, t, line, output=False, flagged_purchases
     elif line['event_type'] == 'unfriend':
         friends[line['id1']].remove(line['id2'])
         friends[line['id2']].remove(line['id1'])
-    
 
 def process():
     # Get input variables and data
@@ -98,11 +98,9 @@ def process():
     # Process batch data
     for line in init_data:
         process_line(friends, purchases, d, t,line, output=False)
-    
     # Process streaming data
     for line in stream_data:
         process_line(friends, purchases, d, t,line, output=True, flagged_purchases=flagged_purchases)
-    print(flagged_purchases)
     
     # Generate ouptut
     with open(output_file, 'w') as outfile:
