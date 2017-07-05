@@ -1,8 +1,8 @@
 # Anomaly Detection Project
 - Main python code: src/main.py
-- 4 test cases in insight_testsuite/tests
+- 4 test cases created in insight_testsuite/tests
 - created a map of map to track friends network
-- created a map of priority queue to track users' most recent T purchase history, more details in the code comment section
+- created a map of priority queue to track users' most recent T purchase history, more details available in the code comment section
 - time complexity analysis
   - friend/unfriend: O(1)
   - process historical purchase history: O(log(T))
