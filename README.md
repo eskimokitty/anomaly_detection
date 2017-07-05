@@ -1,1 +1,14 @@
-# anomaly_detection
+# Anomaly Detection Project
+- Main python code: src/main.py
+- 4 test cases in insight_testsuite/tests
+- created a map of map to track friends network
+- created a map of priority queue to track users' most recent T purchase history, more details in the code comment section
+- time complexity analysis
+  - friend/unfriend: O(1)
+  - process historical purchase history: O(log(T))
+  - process new purchase transaction: O(n)
+- spent around 6 hours on it due to busy work schedule
+- if there's more time available, I will try to enhance the following areas:
+  - add more test cases. I encountered json parsing ValueError while creating my own json input log files. 
+  - update readme section 
+  - make source code more organized
